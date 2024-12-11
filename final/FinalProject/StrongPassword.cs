@@ -1,3 +1,9 @@
 class StrongPassword : Password{
-    // figure out what parameters to set here
+    public StrongPassword() : base(){
+        _minCapitals = 3;
+        _minDigits = 2;
+        _minSpecialCharacters = 3;
+        _minLength = 12;
+        _type = "Strong";
+    }
 }
