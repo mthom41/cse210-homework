@@ -1,5 +1,6 @@
 class PasswordManager{
     List<Password> _passwords = new List<Password>();
+    StrengthChecker _checker = new StrengthChecker();
     private string _masterSecret;
     public void DisplayAll(){
         foreach(Password pwd in _passwords){
@@ -9,7 +10,12 @@ class PasswordManager{
         }
     }
     public void Modify(Password pass){
-        // verify secrets then run pass.Create()
+        if(pass.GetSecret() == _masterSecret){
+            pass.Create(_checker, _masterSecret);
+        } 
+        else{
+            Console.WriteLine("Secrets do not match.");
+        }
     }
     public void GetHelp(Password pass){
         Console.WriteLine(pass.GetDescription());

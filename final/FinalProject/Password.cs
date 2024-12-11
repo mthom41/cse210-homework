@@ -20,8 +20,9 @@ class Password{
             return "Secrets do not match";
         }
     }
-    public virtual void Create(StrengthChecker checker){
-        checker.Evaluate(this);
+    public virtual void Create(StrengthChecker checker, string master_secret){
+        _secret = master_secret;
+        checker.Evaluate(this, master_secret);
     }
     public string GetSecret(){
         return _secret;
@@ -31,5 +32,13 @@ class Password{
     }
     public string GetHint(){
         return _hint;
+    }
+    public List<int> GetRequirements(){
+        /*int[] reqs =[0,0,0,0];
+        reqs[0] = _minLength;
+        reqs[1] = _minCapitals;
+        reqs[2] = _minDigits;
+        reqs[3] */
+        return [_minLength, _minCapitals, _minDigits, _minSpecialCharacters];
     }
 }

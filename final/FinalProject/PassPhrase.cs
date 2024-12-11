@@ -1,3 +1,9 @@
 class PassPhrase : Password{
-    // figure out what parameters to set here (mostly length and capitals/numbers)
+    public PassPhrase() : base(){
+        _minCapitals = 1;
+        _minDigits = 1;
+        _minLength = 20;
+        _minSpecialCharacters = 1;
+        _type = "PassPhrase";
+    }
 }
