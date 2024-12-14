@@ -22,7 +22,18 @@ class Password{
     }
     public virtual void Create(StrengthChecker checker, string master_secret){
         _secret = master_secret;
-        checker.Evaluate(this, master_secret);
+        Console.WriteLine("What is this passsword for?");
+        _description = Console.ReadLine();
+        Console.WriteLine($"{_type} requirements: \n{_minLength} characters \n{_minCapitals} capital letters \n{_minDigits} digits \n{_minSpecialCharacters} special characters");
+        Console.WriteLine("Please input your password: ");
+        _password = Console.ReadLine();
+        if(checker.Evaluate(this, master_secret)){
+            Console.WriteLine("Password Accepted");
+        }
+        else{
+            Console.WriteLine("Did not meet requirements. Password not created.");
+            _password = "1"; // since this value is impossible to set via create(), we can check it to decide whether we add it to the list
+        }
     }
     public string GetSecret(){
         return _secret;
@@ -34,11 +45,6 @@ class Password{
         return _hint;
     }
     public List<int> GetRequirements(){
-        /*int[] reqs =[0,0,0,0];
-        reqs[0] = _minLength;
-        reqs[1] = _minCapitals;
-        reqs[2] = _minDigits;
-        reqs[3] */
         return [_minLength, _minCapitals, _minDigits, _minSpecialCharacters];
     }
 }
