@@ -20,7 +20,10 @@ class StrengthChecker{
             }
         }
         for(int i=0; i<4; i++){
-            if(reqs[i] == actual[i]){
+            if(reqs[i] <= actual[i]){
+                Console.WriteLine("comparison for validation");
+                Console.WriteLine(reqs);
+                Console.WriteLine(actual);
                 valid = true;
             }
             else{

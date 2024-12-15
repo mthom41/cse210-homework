@@ -24,11 +24,13 @@ class Password{
         _secret = master_secret;
         Console.WriteLine("What is this passsword for?");
         _description = Console.ReadLine();
+        Console.WriteLine("What is a hint for this password?");
+        _hint = Console.ReadLine();
         Console.WriteLine($"{_type} requirements: \n{_minLength} characters \n{_minCapitals} capital letters \n{_minDigits} digits \n{_minSpecialCharacters} special characters");
         Console.WriteLine("Please input your password: ");
         _password = Console.ReadLine();
         if(checker.Evaluate(this, master_secret)){
-            Console.WriteLine("Password Accepted");
+            Console.WriteLine("Password Created");
         }
         else{
             Console.WriteLine("Did not meet requirements. Password not created.");
